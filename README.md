@@ -2,6 +2,8 @@
 
 A modern, full-featured grocery e-commerce platform built with React, Node.js, and MongoDB. FreshMart provides a seamless shopping experience for fresh groceries, household essentials, and more.
 
+<img width="1463" height="911" alt="Screenshot 2025-07-18 200125" src="https://github.com/user-attachments/assets/211514e5-3020-4ae0-8029-fa4fe8f990df" />
+
 ## 🛒 Features
 
 ### Customer Features
