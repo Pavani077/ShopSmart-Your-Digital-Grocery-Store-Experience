@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require('./backend/node_modules/mongoose');
+const bcrypt = require('./backend/node_modules/bcryptjs');
 require('dotenv').config();
 
 // Import models
-const User = require('./models/User');
-const Product = require('./models/Product');
-const Category = require('./models/Category');
+const User = require('./backend/models/User');
+const Product = require('./backend/models/Product');
+const Category = require('./backend/models/Category');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/freshmart', {
@@ -100,22 +100,12 @@ const setupDatabase = async () => {
         name: 'Organic Avocados',
         slug: 'organic-avocados',
         description: 'Fresh organic avocados, perfect for guacamole or toast',
-        shortDescription: 'Fresh organic avocados from local farms',
         price: 4.99,
         comparePrice: 6.99,
-        brand: 'FreshMart',
         category: createdCategories[0]._id, // Fresh Produce
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1587915598582-c841544gu8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Organic Avocados',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1587915598582-c841544gu8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Organic Avocados Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1587915598582-c841544gu8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1587915598582-c841544gu8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 50,
         sku: 'AVO-001',
@@ -134,22 +124,12 @@ const setupDatabase = async () => {
         name: 'Free-Range Organic Eggs',
         slug: 'free-range-organic-eggs',
         description: 'Farm fresh organic eggs from free-range chickens',
-        shortDescription: 'Farm fresh organic eggs',
         price: 7.99,
         comparePrice: 9.99,
-        brand: 'FreshMart',
         category: createdCategories[1]._id, // Dairy & Eggs
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1599248839210-2b1551a33753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Free-Range Organic Eggs',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1599248839210-2b1551a33753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Free-Range Organic Eggs Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1599248839210-2b1551a33753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1599248839210-2b1551a33753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 100,
         sku: 'EGG-001',
@@ -168,22 +148,12 @@ const setupDatabase = async () => {
         name: 'Fresh Salmon Fillet',
         slug: 'fresh-salmon-fillet',
         description: 'Premium Atlantic salmon fillet, perfect for grilling',
-        shortDescription: 'Premium Atlantic salmon fillet',
         price: 12.99,
         comparePrice: 15.99,
-        brand: 'FreshMart',
         category: createdCategories[2]._id, // Meat & Seafood
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Fresh Salmon Fillet',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Fresh Salmon Fillet Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 25,
         sku: 'SAL-001',
@@ -202,22 +172,12 @@ const setupDatabase = async () => {
         name: 'Artisanal Sourdough Bread',
         slug: 'artisanal-sourdough-bread',
         description: 'Freshly baked sourdough bread with perfect crust',
-        shortDescription: 'Freshly baked sourdough bread',
         price: 6.50,
         comparePrice: 8.50,
-        brand: 'FreshMart',
         category: createdCategories[3]._id, // Pantry Staples
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1598373154817-1293e5a5f1a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Artisanal Sourdough Bread',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1598373154817-1293e5a5f1a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Artisanal Sourdough Bread Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1598373154817-1293e5a5f1a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1598373154817-1293e5a5f1a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 30,
         sku: 'BRD-001',
@@ -236,22 +196,12 @@ const setupDatabase = async () => {
         name: 'Organic Bananas',
         slug: 'organic-bananas',
         description: 'Sweet organic bananas, perfect for smoothies',
-        shortDescription: 'Sweet organic bananas',
         price: 3.99,
         comparePrice: 5.99,
-        brand: 'FreshMart',
         category: createdCategories[0]._id, // Fresh Produce
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Organic Bananas',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Organic Bananas Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 75,
         sku: 'BAN-001',
@@ -270,22 +220,12 @@ const setupDatabase = async () => {
         name: 'Greek Yogurt',
         slug: 'greek-yogurt',
         description: 'Creamy Greek yogurt with live cultures',
-        shortDescription: 'Creamy Greek yogurt',
         price: 5.99,
         comparePrice: 7.99,
-        brand: 'FreshMart',
         category: createdCategories[1]._id, // Dairy & Eggs
         images: [
-          {
-            url: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Greek Yogurt',
-            isPrimary: true
-          },
-          {
-            url: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-            alt: 'Greek Yogurt Side View',
-            isPrimary: false
-          }
+          'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
         ],
         stock: 40,
         sku: 'YOG-001',
@@ -307,7 +247,6 @@ const setupDatabase = async () => {
 
     // Create users
     const hashedPassword = await bcrypt.hash('password123', 12);
-    const pavaniPassword = await bcrypt.hash('pavani123', 12);
 
     const users = [
       {
@@ -320,9 +259,6 @@ const setupDatabase = async () => {
         addresses: [
           {
             type: 'home',
-            firstName: 'Admin',
-            lastName: 'User',
-            phone: '+1 (555) 123-4567',
             street: '123 Admin Street',
             city: 'Admin City',
             state: 'AC',
@@ -339,42 +275,15 @@ const setupDatabase = async () => {
         lastName: 'Doe',
         email: 'john@example.com',
         password: hashedPassword,
-        role: 'user',
+        role: 'customer',
         phone: '+1 (555) 987-6543',
         addresses: [
           {
             type: 'home',
-            firstName: 'John',
-            lastName: 'Doe',
-            phone: '+1 (555) 987-6543',
             street: '456 Customer Ave',
             city: 'Customer City',
             state: 'CC',
             zipCode: '54321',
-            country: 'USA',
-            isDefault: true
-          }
-        ],
-        isEmailVerified: true,
-        isActive: true
-      },
-      {
-        firstName: 'Pavani',
-        lastName: 'User',
-        email: 'pavani@gmail.com',
-        password: pavaniPassword,
-        role: 'user',
-        phone: '+1 (555) 111-2222',
-        addresses: [
-          {
-            type: 'home',
-            firstName: 'Pavani',
-            lastName: 'User',
-            phone: '+1 (555) 111-2222',
-            street: '789 Pavani Street',
-            city: 'Pavani City',
-            state: 'PC',
-            zipCode: '67890',
             country: 'USA',
             isDefault: true
           }
@@ -396,7 +305,6 @@ const setupDatabase = async () => {
     console.log('\n🔑 Login Credentials:');
     console.log('   Admin: admin@freshmart.com / password123');
     console.log('   Customer: john@example.com / password123');
-    console.log('   Pavani: pavani@gmail.com / pavani123');
     
     console.log('\n🚀 You can now start the application!');
 
